@@ -24,8 +24,8 @@ class TodoActivity : AppCompatActivity() {
             supportActionBar?.title = "Ajouter"
         }
         else {
-            this.titleActivity.text = "Détails de la note:"
-            supportActionBar?.title = this.itemModel?.title
+            this.titleActivity.text = "Titre de la note:"
+            supportActionBar?.title = "Note: " + this.itemModel?.title
 
             this.displayItem()
         }
@@ -34,6 +34,9 @@ class TodoActivity : AppCompatActivity() {
 
     private fun displayItem() {
 
-        this.titleNote.text = itemModel?.title
+        this.itemModel.let { it } ?: return
+
+        this.titleEditField.setText(this.itemModel?.title)
+        this.noteEditText.setText(this.itemModel?.note)
     }
 }

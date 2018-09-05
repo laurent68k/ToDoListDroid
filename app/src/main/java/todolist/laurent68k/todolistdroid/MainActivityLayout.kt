@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main_itemcell.view.*
 import todolist.laurent68k.todolistdroid.TodoDetails.TodoActivity
 
 //  This class handle the RecyclerView with the dataModel given
@@ -31,9 +32,9 @@ class MainActivityLayout(private val mainActivityModel:MainActivityModel) {
 
         override fun onBindViewHolder(holder: MainActivityLayout.ViewHolder, index: Int) {
 
-            //  Set the data to display
-            holder.title.text = this.mainActivityModel.items!![index].title
-            holder.note.text = this.mainActivityModel.items!![index].note
+            //  Set the data to display by accessing directly via itemView
+            holder.itemView.titleText.text = this.mainActivityModel.items!![index].title
+            holder.itemView.noteText.text = this.mainActivityModel.items!![index].note
 
             //  Keep the object for details Activity
             holder.itemModel = this.mainActivityModel.items!![index]
@@ -49,16 +50,12 @@ class MainActivityLayout(private val mainActivityModel:MainActivityModel) {
     }
 
     //  Define the cell view
-    class ViewHolder(itemView : View, var itemModel : MainActivityModel.ItemModel? = null) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    class ViewHolder(view : View, var itemModel : MainActivityModel.ItemModel? = null) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
         companion object {
 
-            val DETAILS_ACTIVITY_TITLE = "etailsActivityTitle"
             val DETAILS_ACTIVITY_OBJECT = "DetailsActivityObject"
         }
-
-        val title: TextView = itemView.findViewById( R.id.titleText)
-        val note: TextView = itemView.findViewById( R.id.noteText)
 
         init {
 
