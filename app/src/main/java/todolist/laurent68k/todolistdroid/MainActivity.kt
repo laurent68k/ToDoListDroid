@@ -32,5 +32,6 @@ class MainActivity : AppCompatActivity() {
         this.mainRecyclerView.layoutManager = LinearLayoutManager( this )
         this.mainRecyclerView.adapter = this.activityLayout.itemsAdapter
 
+        this.activityLayout.setRecyclerViewItemTouchListener( this.mainRecyclerView )
     }
 }

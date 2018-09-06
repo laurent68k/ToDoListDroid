@@ -53,4 +53,9 @@ class MainActivityModel {
             this.items!!.add( ItemModel( "Titre ${i}", "Note ${i}" ) )
         }
     }
+
+    fun remove(note: ItemModel) {
+
+        this.items?.remove(note)
+    }
 }
