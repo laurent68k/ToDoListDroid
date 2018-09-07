@@ -48,7 +48,7 @@ class MainActivityModel {
 
         this.items = ArrayList()
 
-        for (i in 1..1000) {
+        for (i in 1..15) {
 
             this.items!!.add( ItemModel( "Titre ${i}", "Note ${i}" ) )
         }
@@ -57,5 +57,12 @@ class MainActivityModel {
     fun remove(note: ItemModel) {
 
         this.items?.remove(note)
+    }
+
+    fun add() : Int {
+
+        this.items!!.add( ItemModel( "Nouvelle note", "Texte de la note..." ) )
+
+        return (this.items!!.size) - 1
     }
 }

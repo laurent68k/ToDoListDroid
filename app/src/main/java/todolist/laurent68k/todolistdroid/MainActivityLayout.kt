@@ -150,9 +150,9 @@ class MainActivityLayout(private val mainActivityModel:MainActivityModel) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
                 //onSwiped is called when you swipe an item in the direction specified in the ItemTouchHelper. Here, you request the viewHolder parameter passed for the position of the item view, then you remove that item from your list of photos. Finally, you inform the RecyclerView adapter that an item has been removed at a specific position.
                 val position = viewHolder.adapterPosition
-                val note = mainActivityModel?.items!![position]
+                val note = mainActivityModel.items!![position]
 
-                mainActivityModel?.remove(note as MainActivityModel.ItemModel)
+                mainActivityModel.remove(note)
 
                 recyclerView.adapter?.notifyItemRemoved(position)
             }
@@ -165,7 +165,7 @@ class MainActivityLayout(private val mainActivityModel:MainActivityModel) {
 
                 if (isCanceled) {
                     clearCanvas(c, itemView.right + dX, itemView.top.toFloat(), itemView.right.toFloat(), itemView.bottom.toFloat())
-                    recyclerView?.let { super.onChildDraw(c, it, viewHolder, dX, dY, actionState, isCurrentlyActive) }
+                    super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                     return
                 }
 
